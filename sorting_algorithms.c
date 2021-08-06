@@ -22,14 +22,35 @@ int is_sorted(int* arr, int n){
 }
 
 void bubble_sort(int* arr, int n){
-
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n-i-1; j++){
+            if(arr[j] > arr[j+1]){
+                int temp = arr[j];
+                arr[j] = arr[j+1];
+                arr[j+1] = temp;
+            }
+        }
+    }
 }
 
 void insertion_sort(int* arr, int n){
     
+    
 }
 
 void selection_sort(int* arr, int n){
+    for (int i = 0; i < n; i++){
+        int min_index = i;
+        for (int j = i+1; j < n; j++){
+            if(arr[j] < arr[min_index]){
+                min_index = j;
+            }
+        }
+        
+        int temp = arr[i];
+        arr[i] = arr[min_index];
+        arr[min_index] = temp;
+    }
     
 }
 
@@ -45,7 +66,22 @@ int main()
     
     
     int arr[] = {5, 2, 1, 3, 4};
-    printf("%d", is_sorted(arr, size));
+    bubble_sort(arr, size);
+    if(is_sorted(arr, size)){
+        printf("Bubble sort ok!\n");
+    }
+    
+    int arr2[] = {5, 2, 1, 3, 4};
+    selection_sort(arr2, size);
+    if(is_sorted(arr2, size)){
+        printf("Selection sort ok!\n");
+    }
+    
+    int arr3[] = {5, 2, 1, 3, 4};
+    insertion_sort(arr3, size);
+    if(is_sorted(arr3, size)){
+        printf("Insertion sort ok!\n");
+    }
     
     int* p = arr;
     
