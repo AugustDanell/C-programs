@@ -21,6 +21,11 @@ int is_sorted(int* arr, int n){
     return 1;
 }
 
+/* bubble_sort
+*  A very simple sorting algorithm that pushes the biggest value it can find to
+*  the rightmost element.
+*/
+
 void bubble_sort(int* arr, int n){
     for(int i = 0; i < n; i++){
         for(int j = 0; j < n-i-1; j++){
@@ -34,9 +39,23 @@ void bubble_sort(int* arr, int n){
 }
 
 void insertion_sort(int* arr, int n){
-    
+    for(int i = 1; i < n; i++){
+        int comparing_element = arr[i];
+        int j = i - 1;
+        while(j >= 0 && comparing_element < arr[j]){
+            arr[j+1] = arr[j];
+            j--;
+        }
+        
+        arr[j+1] = comparing_element;
+    }
     
 }
+
+/* Selection_short
+*  A sorting algorithm that iterates through an array and finds the smallest value
+*  putting it at the front, then iterates on with the rest of the array similarily.
+*/
 
 void selection_sort(int* arr, int n){
     for (int i = 0; i < n; i++){
