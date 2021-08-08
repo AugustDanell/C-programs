@@ -38,6 +38,13 @@ void bubble_sort(int* arr, int n){
     }
 }
 
+/* Insertion_sort
+*  Insertiong sort switches two elements all the time, so that we have a sorted
+*  array on the left hand side. If a smaller element comes along in the unsorted
+*  array the insertion sort switches each left side element iteratively, thus pushing
+*  that smaller element into the sorted array, where it belongs.
+*/
+
 void insertion_sort(int* arr, int n){
     for(int i = 1; i < n; i++){
         int comparing_element = arr[i];
@@ -73,6 +80,13 @@ void selection_sort(int* arr, int n){
     
 }
 
+
+/* split_array
+*  A helper function that takes in two empty arrays (sarr1, sarr2) and an array
+*  arr. The function also takes in n, which is the size of n and split_point which
+*  is where the user wants to split arr into two splitted arrays, (sarr1 and sarr2)
+*/
+
 void split_array(int*arr, int*sarr, int* sarr2, int n, int split_point){
     int s1 = 0;
     int s2 = 0;
@@ -86,6 +100,18 @@ void split_array(int*arr, int*sarr, int* sarr2, int n, int split_point){
         }
     }
 }
+
+/* merge_sort
+*  A normal merge sort using the split_array above as a helper. 
+*  1. We start with just plitting up the array until we reach 'ground floor', 
+*  that is where each split consists of just one element. 
+*  2. We start assembling the splits again, merging them as it were. Each time
+*  we merge we know that both sub-arrays are already sorted from previous merging
+*  and so we can directly compare between the two arrays.
+*  3. If one sub-array is exhausted we have to take the rest of the elements from
+*  the other array which is very simple because it is sorted so we only need to
+*  take its elements in order.
+*/
 
 void merge_sort(int* arr, int n){
     int split_point = 0;
@@ -137,7 +163,7 @@ void merge_sort(int* arr, int n){
             k++;
         }
         
-        // 3. Any left overs we add in:
+        // 3. Left overs we add in, the sub-arrays are already sorted, so this works:
         while(l != first_size){
             arr[k] = sarr[l];
             k++;
@@ -153,6 +179,10 @@ void merge_sort(int* arr, int n){
         
     }
     
+    
+}
+
+void quick_sort(int* arr, int size){
     
 }
 
@@ -190,6 +220,16 @@ int main()
     merge_sort(arr4, size);
     if(is_sorted(arr4, size)){
         printf("Merge sort ok!\n");
+    }
+    
+    size = 5;
+    int arr5[] = {5, 2, 1, 3, 4};
+    quick_sort(arr5, size);
+    if(is_sorted(arr5, size)){
+        printf("quick sort ok!\n");
+    }
+    else{
+        printf("Quick sort todo!\n");
     }
     
     int* p = arr;
