@@ -73,11 +73,44 @@ void selection_sort(int* arr, int n){
     
 }
 
-void merge_sort(int* arr, int n){
-    int split_point;
-    if(n > 1){
-        split_point = int(n/2);
+void split_array(int*arr, int*sarr, int* sarr2, int n, int split_point){
+    int s1 = 0;
+    int s2 = 0;
+    
+    for(int i = 0; i < n; i++){
+        if(i > split_point){
+            sarr2[s2] = arr[i];
+        }
+        else{
+            sarr[s1] = arr[i];
+        }
     }
+}
+
+void merge_sort(int* arr, int n){
+    int split_point = 0;
+    int is_even = 0;
+    if(n > 1){
+        double split = n/2;
+        split_point = (int)(split);
+        
+        if(n%2 == 0){
+            is_even = 1;
+        }
+    
+        int first_size = split_point + is_even;
+        int second_size = split_point;
+    
+        int sarr[first_size];
+        int sarr2[second_size];
+    
+
+        printf("Splitting point is: %d", split_point);
+        for (int i = 0; i < first_size; i++){
+            printf("%d ", sarr[i]);
+        }
+    }
+    
     
 }
 
