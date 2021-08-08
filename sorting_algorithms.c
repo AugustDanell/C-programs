@@ -73,6 +73,14 @@ void selection_sort(int* arr, int n){
     
 }
 
+void merge_sort(int* arr, int n){
+    int split_point;
+    if(n > 1){
+        split_point = int(n/2);
+    }
+    
+}
+
 int main()
 {   
     
@@ -99,6 +107,12 @@ int main()
     int arr3[] = {5, 2, 1, 3, 4};
     insertion_sort(arr3, size);
     if(is_sorted(arr3, size)){
+        printf("Insertion sort ok!\n");
+    }
+    
+    int arr4[] = {5, 2, 1, 3, 4};
+    merge_sort(arr4, size);
+    if(is_sorted(arr4, size)){
         printf("Insertion sort ok!\n");
     }
     
