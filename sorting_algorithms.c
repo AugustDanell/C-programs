@@ -89,26 +89,68 @@ void split_array(int*arr, int*sarr, int* sarr2, int n, int split_point){
 
 void merge_sort(int* arr, int n){
     int split_point = 0;
-    int is_even = 0;
+    int is_odd = 1;
     if(n > 1){
+        // 1. Split it up:
         double split = n/2;
         split_point = (int)(split);
         
         if(n%2 == 0){
-            is_even = 1;
+            is_odd = 0;
         }
     
-        int first_size = split_point + is_even;
+        int first_size = split_point + is_odd;
         int second_size = split_point;
     
         int sarr[first_size];
         int sarr2[second_size];
-    
-
-        printf("Splitting point is: %d", split_point);
+        int s1 = 0;
+        int s2 = 0;
+        
         for (int i = 0; i < first_size; i++){
-            printf("%d ", sarr[i]);
+            sarr[i] = arr[i];
         }
+        
+        for (int i = 0; i < second_size; i++){
+            sarr2[i] = arr[i+first_size];
+        }
+        
+        merge_sort(sarr, first_size);
+        merge_sort(sarr2, second_size);
+        
+        int l = 0;
+        int r = 0;
+        int k = 0;
+        
+        // 2. Combining it back up, make use of the fact that they are already sorted:
+        
+        while(l < first_size && r < second_size){
+            if(sarr[l] < sarr2[r]){
+                arr[k] = sarr[l];
+                l++;
+            }
+            else{
+                arr[k] = sarr2[r];
+                r++;
+            }
+            
+            k++;
+        }
+        
+        // 3. Any left overs we add in:
+        while(l != first_size){
+            arr[k] = sarr[l];
+            k++;
+            l++;
+        }
+        
+        while(r != second_size){
+            arr[k] = sarr2[r];
+            k++;
+            r++;
+        }
+        
+        
     }
     
     
@@ -143,10 +185,11 @@ int main()
         printf("Insertion sort ok!\n");
     }
     
+    size = 5;
     int arr4[] = {5, 2, 1, 3, 4};
     merge_sort(arr4, size);
     if(is_sorted(arr4, size)){
-        printf("Insertion sort ok!\n");
+        printf("Merge sort ok!\n");
     }
     
     int* p = arr;
