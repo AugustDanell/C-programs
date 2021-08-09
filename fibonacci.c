@@ -2,10 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct queue_node{
-  int val;
-  struct node* next_val;
-};
 
 
 int naive_fibonacci(int n){
@@ -20,13 +16,27 @@ int naive_fibonacci(int n){
     }
 }
 
+
+int bot_up_fibonacci(int n){
+    int n1 = 1;
+    int n2 = 1;
+    
+    for(int i = 2; i <n; i++){
+        int temp = n2;
+        n2 = n1 + n2;
+        n1 = temp;
+    }
+    
+    return n2;
+}
+
 int main()
 {   
     int n;
     printf("Enter in a fibonacci number: \n");
     scanf("%d", &n);
-    printf("Your fibonacci number is: %d", naive_fibonacci(n));
-    
+    printf("Your naive fibonacci number is: %d\n", naive_fibonacci(n));
+    printf("Your bottom-up fibonacci number is: %d\n", bot_up_fibonacci(n));
     
     return 0;
 }
