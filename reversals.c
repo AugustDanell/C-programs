@@ -6,8 +6,7 @@ void reverse_int(int* n){
 
 }
 
-void reverse_str(char* str, int length){
-    char reversal[50];
+void reverse_str(char* str, int length, char* reversal){
     int index = length -1;
     int rev_index = 0;
     while(index >= 0){
@@ -15,8 +14,6 @@ void reverse_str(char* str, int length){
         index --;
         rev_index++;
     }
-    
-    str = reversal;
     
 }
 
@@ -36,8 +33,9 @@ int main()
         char str[50];
         scanf("%s", &str);
         int length = strlen(str);
-        reverse_str(str, length);
-        printf("Your reversed string is: %s", str);
+        char rev_str[50]; 
+        reverse_str(str, length, rev_str);
+        printf("Your reversed string is: %s\n", rev_str);
         
     }
     
