@@ -2,7 +2,9 @@
 #include <stdlib.h>
 
 /* stack_node
-*  The struct of a stack. A stack is like a pile of different objects, like a pile of plates that need to be dished (sigh). The stack_node is implemented in such a way that it holds a value and a pointer to 
+*  The struct of a stack. A stack is like a pile of different objects, like a pile of plates that need to be dished (sigh). The stack_node is implemented in such a way that it 
+   holds a value and a pointer to the previous value on the stack, the plate below it if you so will. We can put (push) plates to the stack as well as remove (pop) the topmost
+   plate from the stack. Any other plates we can simply not get our hands on.
 */
 
 struct stack_node{
@@ -21,7 +23,7 @@ int main()
     printf("How many values to insert?\n");
     scanf("%d", &vals);
     
-    // Insertion:
+    // Insertion: Pushing elements (plates) to the stack.
     while(vals > 0){
         int value;
         printf("Push a value: ");
@@ -45,12 +47,8 @@ int main()
     }
 
         
-    // Print values:
+    // Removal: Popping the values of the stack and printing the process as we go:
     int i = 0;
-    struct stack_node* print = NULL;
-    print = (struct stack_node*)malloc(sizeof(struct stack_node));
-    print = top;
-    
     printf("Popping the inserted Values:\n");
     while(i < length){
         int out = top -> val;
