@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* stack_node
+*  The struct of a stack. A stack is like a pile of different objects, like a pile of plates that need to be dished (sigh). The stack_node is implemented in such a way that it holds a value and a pointer to 
+*/
+
 struct stack_node{
   int val;
   struct node* prev_val;
