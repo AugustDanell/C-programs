@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+/* node
+*  Like a node in a chain, where each node holds a value but also a pointer to the next value in the chain. This way we can traverse a linked list of values.
+*  This can easily be made double linked by also having a value pointing back to the previous value, though this can be good it also takes more memory. 
+*/
 struct node{
   int val;
   struct node* next_val;
@@ -9,6 +13,7 @@ struct node{
 
 int main()
 {   
+    // Memory Allocation:
     struct node* root = NULL;
     struct node* current = NULL;
     root = (struct node*)malloc(sizeof(struct node));
