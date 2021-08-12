@@ -1,5 +1,10 @@
 #include <stdio.h>
 
+/* naive_prime_test
+*  Uses the Sieves of Erasthones algorithm to discern if the int c is a prime or not.
+*  This is a fail safe method but it is slow for large c. 
+*/
+
 int naive_prime_test(int c){
     for(int i = 2; i < c; i++){
         if(c % i == 0){
